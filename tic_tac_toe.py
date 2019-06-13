@@ -13,6 +13,13 @@ def print_grid(_arg):
     print(_e0, '\n', _e, '\n', l1, '\n', _e, '\n', l2, '\n', _e, '\n', l3, '\n', _e)
 
 
-print_grid(_list)
+def make_turn(_arg1):
+    print("It's YOUR turn")
+    abscisse = int(input("ROW number = ")) - 1
+    ordinatus = int(input("COLUMN number = ")) - 1
+    _arg1[abscisse][ordinatus] = 1
 
-#def make_turn(_arg1, _arg2, _arg3):
+
+print_grid(_list)
+make_turn(_list)
+print_grid(_list)
