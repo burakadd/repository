@@ -46,11 +46,13 @@ def make_turn(_arg1):
 
 
 def check_win(_arg):
-    for i in _arg:
-        if len(set(i)) == 1:
-            sys.exit("{} IS WINNER".format(_player(turn_number)))
+    #for i in _arg:
+       # if len(set(i)) == 1:
+            #sys.exit("{} IS WINNER".format(_player(turn_number)))
     for i in range(3):
         if _arg[0][i] == _arg[1][i] == _arg[2][i] and _arg[0][i] != " ":
+            sys.exit("{} IS WINNER".format(_player(turn_number)))
+        elif _arg[i][0] == _arg[i][1] == _arg[i][2] and _arg[i][2] != " ":
             sys.exit("{} IS WINNER".format(_player(turn_number)))
     if _arg[0][0] == _arg[1][1] == _arg[2][2] and _arg[0][0] != " ":
         sys.exit("{} IS WINNER".format(_player(turn_number)))
@@ -65,7 +67,7 @@ def check_draw():
 
 print("LET'S PLAY")
 turn_number = 1   
-for i in range(3):
+while True:
     make_turn(_list)
     print_grid(_list)
     check_win(_list)
