@@ -46,9 +46,6 @@ def make_turn(_arg1):
 
 
 def check_win(_arg):
-    #for i in _arg:
-       # if len(set(i)) == 1:
-            #sys.exit("{} IS WINNER".format(_player(turn_number)))
     for i in range(3):
         if _arg[0][i] == _arg[1][i] == _arg[2][i] and _arg[0][i] != " ":
             sys.exit("{} IS WINNER".format(_player(turn_number)))
