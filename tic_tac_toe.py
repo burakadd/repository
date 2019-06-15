@@ -10,7 +10,7 @@ _dict = {pl1: "X", pl2: "O"}
 
 
 def _player(_arg):
-        return pl1 if _arg % 2 else pl2
+    return pl1 if _arg % 2 else pl2
 
 
 def print_grid(_arg):
@@ -19,6 +19,7 @@ def print_grid(_arg):
     l1 = ' 1 | {} | {} | {} |'.format(_arg[0][0], _arg[0][1], _arg[0][2])
     l2 = ' 2 | {} | {} | {} |'.format(_arg[1][0], _arg[1][1], _arg[1][2])
     l3 = ' 3 | {} | {} | {} |'.format(_arg[2][0], _arg[2][1], _arg[2][2])
+    _field =
     print(_e0, '\n', _e, '\n', l1, '\n', _e, '\n', l2, '\n', _e, '\n', l3, '\n', _e)
 
 
