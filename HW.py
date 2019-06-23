@@ -1,7 +1,17 @@
-class Foo(object):
-    def f1():
-    def f2(self):
-поведение объекта - то,что с объектом можно делать
-свойство оюъекта - наюор абстрактных характеристик объекта
-    def __init__(self):
-н
+from random import shuffle
+a = list(range(25))
+shuffle(a)
+
+
+def _prime(_arg):
+    if _arg % 2 == 0:
+        return False
+    d = 3
+    while d**2 <= _arg and _arg % d != 0:
+        d += 2
+    if d**2 > _arg:
+        return True
+    else:
+        return False
+
+print(list(filter(lambda i: _prime(i), a)))
