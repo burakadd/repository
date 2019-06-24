@@ -1,4 +1,9 @@
+import random
 import functools
+
+def _join(_arg):
+    _list = [i*10**(len(_arg) - j) for j, i in enumerate(_arg, 1)]
+    return functools.reduce(lambda i,j: i + j, _list)
 
 
 def _prime(_arg):
@@ -13,21 +18,26 @@ def _prime(_arg):
         return False
 
 
-def _switchcase(_arg):
-    _dict = {"sum": functools.reduce(lambda i, j: i + j, _arg),
+def _switchcase(_arg, *funcs):
+    _switchcaselist = {"sum": functools.reduce(lambda i, j: i + j, _arg),
              "multiply": functools.reduce(lambda i, j: i * j, _arg),
-             "join": map(int, "".join(map(str, _arg))),
+             "join": _join(_arg),
              "union": set(_arg),
 
-             "negated": map(lambda i: -i, _arg),
-             "inverted": map(lambda i: i**(-1), _arg),
-             "squared": map(lambda i: i**2, _arg),
+             "negated": list(map(lambda i: -i, _arg)),
+             "inverted": list(map(lambda i: i**(-1), _arg)),
+             "squared": list(map(lambda i: i**2, _arg)),
 
-             "odds": filter(lambda i: i % 2 == 1, _arg),
-             "evens": filter(lambda i: i % 2 == 0, _arg),
-             "simples": filter(lambda i: _prime(i), _arg)}
-    return None
+             "odds": list(filter(lambda i: i % 2 == 1, _arg)),
+             "evens": list(filter(lambda i: i % 2 == 0, _arg)),
+             "simples": list(filter(lambda i: _prime(i), _arg))}
+    return _switchcaselist[func]
 
 
-a = [5, 6, 7]
-print(map(int, "".join(list(map(str, a)))))
+n = int(input("n = "))    
+_data = [random.randint(1, 9) for i in range(n)]
+print(_data)
+for func in reversed(input("input funcs ").split(" ")):
+    print(func)
+    _data = _switchcase(_data, func)
+    print(_data)
