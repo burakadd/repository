@@ -23,6 +23,7 @@ def _switchcase(_arg, *funcs):
              "multiply": functools.reduce(lambda i, j: i * j, _arg),
              "join": _join(_arg),
              "union": set(_arg),
+             "reversed": reversed(_arg),
 
              "negated": list(map(lambda i: -i, _arg)),
              "inverted": list(map(lambda i: i**(-1), _arg)),
