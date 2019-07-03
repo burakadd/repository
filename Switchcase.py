@@ -7,10 +7,10 @@ def _join(_arg):
 
 
 def _prime(_arg):
-    if _arg % 2 == 0:
+    if not _arg % 2:
         return False
     d = 3
-    while d**2 <= _arg and _arg % d != 0:
+    while d**2 <= _arg and _arg % d:
         d += 2
     if d**2 > _arg:
         return True
@@ -29,8 +29,8 @@ def _switchcase(_arg, *funcs):
              "inverted": list(map(lambda i: i**(-1), _arg)),
              "squared": list(map(lambda i: i**2, _arg)),
 
-             "odds": list(filter(lambda i: i % 2 == 1, _arg)),
-             "evens": list(filter(lambda i: i % 2 == 0, _arg)),
+             "odds": list(filter(lambda i: i % 2, _arg)),
+             "evens": list(filter(lambda i: not i % 2, _arg)),
              "simples": list(filter(lambda i: _prime(i), _arg))}
     return _switchcaselist[func]
 
@@ -42,3 +42,12 @@ for func in reversed(input("input funcs ").split(" ")):
     print(func)
     _data = _switchcase(_data, func)
     print(_data)
+
+
+             "join": _join(_arg),
+             "union": set(_arg),
+             "reversed": reversed(_arg),
+reducer = {"sum": lambda i, j: i + j, "multiply": lambda i, j: i * j,
+}
+mappers = {"negated": lambda i: -i, "inverted": lambda i: i ** (-1),"squared": lambda i: i ** 2}
+filters = {"odds": lambda i: i % 2, "evens": lambda i: not i % 2, "simples": lambda i: _prime(i)}
