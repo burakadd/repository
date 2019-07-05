@@ -1,17 +1,15 @@
-from random import shuffle
-a = list(range(25))
-shuffle(a)
+import math
 
 
-def _prime(_arg):
-    if _arg % 2 == 0:
-        return False
-    d = 3
-    while d**2 <= _arg and _arg % d != 0:
-        d += 2
-    if d**2 > _arg:
-        return True
-    else:
-        return False
+def max_odd(num):
+    n = math.ceil(math.sqrt(num))
+    while num % n or not n % 2:
+        n -= 1
+    return [n for i in range(num // n)]
 
-print(list(filter(lambda i: _prime(i), a)))
+
+print(max_odd(8))
+
+
+# numbers = [1, 2, 3, 4, 12, 18]
+# print(list(map(lambda i: max_odd(i) for j in range(i // max_odd(i)) if i % 2, numbers)))
