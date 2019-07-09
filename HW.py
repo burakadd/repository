@@ -1,4 +1,4 @@
-# from socket import create_connection, SHUT_WR, socket, getaddrinfo
+ from socket import create_connection, SHUT_WR, socket, getaddrinfo
 # #
 # # with create_connection(('google.by', 80)) as s:
 # #     s.send(b'GET / HTTP/1.1\r\n\r\n')
