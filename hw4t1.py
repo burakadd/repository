@@ -172,3 +172,24 @@ print(a)
 print(a[1])
 a[-1] = 'here'
 print([i for i in a])
+test = LinkedList()
+test.append(2)
+test.append(6)
+test.append(78)
+test.append('fgtx')
+test.insert('is43t', 3)
+test.insert('is23t', 2)
+test.insert('is23t', 4)
+test1 = []
+test1.append(2)
+test1.append(6)
+test1.append(78)
+test1.append('fgtx')
+test1.insert(3, 'is43t')
+test1.insert(2, 'is43t')
+test1.insert(4, 'is43t')
+print(test)
+print(test1)
+
+
+

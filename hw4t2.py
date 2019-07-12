@@ -3,7 +3,9 @@ connect = sqlite3.connect('hw4t2.sqlite')
 cursor = connect.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS Users (id text, name text, address text)")
 connect.close()
-class User:
+class User:  #
+    name = Column()  #
+    address = Column()  #
     def __init__(self, id):
         self.id = id#
         self.name = Column()#
@@ -11,14 +13,11 @@ class User:
 
 
 
-
 class Column:
-    def __init__(self, id, data):
-        self.id = User.id
     def __get__(self, instance, owner):
         connect = sqlite3.connect('hw4t2.sqlite')
         cursor = connect.cursor()
-        cursor.execute("CREATE TABLE IF NOT EXISTS Users (id text, name text, address text)")
+        cursor.execute("")
         pass
 
     def __set__(self, instance, value):
@@ -37,4 +36,4 @@ class Column:
         pass
 
     def __set_name__(self, owner, name):
-        print(f'It is {name} attribute')
+        self.name = name
