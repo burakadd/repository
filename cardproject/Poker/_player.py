@@ -2,19 +2,24 @@ from typing import List
 from ._card import Card
 
 
-class Player:
-    __cards: List[Card]
-    __index: int
+class Player(object):
+	__cards: List[Card]
 
-    def __init__(self):
-        self.__cards = []
+	def __init__(self):
+		self.__cards = []
 
-    def add_card(self, card: Card) -> None:
-        assert len(self.__cards) < 2
-        self.__cards.append(card)
+	@property
+	def cards(self):
+		return self.__cards
 
-    def reset(self):
-        self.__cards.clear()
+	def add_card(self, card: Card) -> None:
+		assert len(self.__cards) < 2
+		self.__cards.append(card)
 
-    def poll(self):
-        raise NotImplementedError()
+	def reset(self) -> None:
+		self.__cards.clear()
+
+	# def poll(self) -> bool:
+    #     raise NotImplementedError()
+
+

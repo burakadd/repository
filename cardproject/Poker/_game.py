@@ -1,10 +1,9 @@
-from ._card import Card
-from ._deck import Deck
+from typing import Optional, Iterable
 from ._player import Player
-from._table import Table
-from typing import Iterable
+from ._table import Table
 
-class Game:
+
+class Game(object):
     __table: Table
     __state: int
 
@@ -12,25 +11,34 @@ class Game:
         self.__table = Table(players)
         self.__state = 0
 
-    def start(self):
+    def start(self) -> None:
         assert self.__state == 0
         self.__table.rotate()
         self.__state += 1
 
-    def step(self):
+    def step(self) -> Optional[Player]:
         assert self.__state != 0
+
         if self.__state == 1:
             self.__preflop()
         elif self.__state == 2:
             self.__flop()
         elif self.__state == 3:
             self.__turn()
-        elif self.__state == 2:
+        elif self.__state == 4:
             self.__river()
         else:
             self.__finish()
-        if len(self.__table.active)
-        self.__state = (self.__state + 1) % 6
+
+        if len(self.__table.active) > 1:
+            self.__state = (self.__state + 1) % 6
+        else:
+            self.__state = 0
+
+        if self.__state == 0:
+            return self.__table.active[0]
+        else:
+            return None
 
     def __preflop(self):
         self.__table.poll()
@@ -48,4 +56,4 @@ class Game:
         self.__table.poll()
 
     def __finish(self):
-
+        self.__table.finish()
