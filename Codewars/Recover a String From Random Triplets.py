@@ -12,4 +12,4 @@ def recover_secret(triplets):
     return ''.join(secret)
 
 
-recoverSecret = recover_secret  # PEP8
+recoverSecret = recover_secret
