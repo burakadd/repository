@@ -31,3 +31,13 @@ def sudoku(matrix):
 
 
 print(sudoku(s))
+def isquare(row, column, matrix):
+   0 <= row
+
+
+
+
+
+def sudokusolver(matrix):
+    for row in matrix:
+        for i in row:

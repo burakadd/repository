@@ -1,28 +1,31 @@
-_dict = {'+': lambda x, y: x + y,
-         '-': lambda x, y: x - y,
-         '*': lambda x, y: x * y,
-         '/': lambda x, y: x / y
-         }
-a = input('math problem =').split(" ")
+class Calculator(object):
+    def evaluate(self, string):
+        operands = {'+': lambda x, y: x + y,
+                    '-': lambda x, y: x - y,
+                    '*': lambda x, y: x * y,
+                    '/': lambda x, y: x / y
+                    }
 
-while True:
-    for i, j in enumerate(a):
-        if j == "/" or j == "*":
-            a[i - 1] = _dict[j](float(a[i - 1]), float(a[i + 1]))
-            a.pop(i)
-            a.pop(i)
-            break
-    else:
-        break
+        listofsymbols = string.split(" ")
 
-while True:
-    for i, j in enumerate(a):
-        if j == "+" or j == "-":
-            a[i - 1] = _dict[j](float(a[i - 1]), float(a[i + 1]))
-            a.pop(i)
-            a.pop(i)
-            break
-    else:
-        break
+        while True:
+            for index, symbol in enumerate(listofsymbols):
+                if symbol == "/" or symbol == "*":
+                    listofsymbols[index - 1] = operands[symbol](float(listofsymbols[index - 1]), float(listofsymbols[index + 1]))
+                    listofsymbols.pop(index)
+                    listofsymbols.pop(index)
+                    break
+            else:
+                break
 
-print(*a)
+        while True:
+            for index, symbol in enumerate(listofsymbols):
+                if symbol == "+" or symbol == "-":
+                    listofsymbols[index - 1: index + 2] = operands[symbol](float(listofsymbols[index - 1]), float(listofsymbols[index + 1]))
+                    listofsymbols.pop(index)
+                    listofsymbols.pop(index)
+                    break
+            else:
+                break
+
+        return listofsymbols
